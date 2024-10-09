@@ -1,0 +1,200 @@
+{% extends "vorlagen/main.html" %}
+{% block content %}
+
+<header class="header">
+        <div class="header-content">
+            <p>Finde mit unserem Test Dein individuelles Sprachniveau heraus,</p>
+            <p>um Deine persönlichen Ziele feszulegen</p>
+            <p>und Deinen Digitalen Brieffreund zu finden.</p>
+        </div>
+        <img src="../static/pictures/sprachlevel.png" alt="Sprachlevel" height="250px" width="300px" class="header_image">
+</header>
+<body class="body-content">
+    <div class="formular">
+        <form action="/leveltest" method="POST">
+            <!--von a1 zu level a2 springen nur möglich wenn antwort mehr als 5 wörter lang ist -->
+            {% if sprachlevel == 'A1' %}
+                <div class="intro orange">
+                    <h4>
+                        Bei jeder Frage gibt es nur eine richtige Antwort. Wähle die passende Option und entwickele
+                        dich weiter.
+                        <p>Viel Erfolg und auf zu A2!</p>
+                    </h4>
+                </div>
+                <input type="hidden" name="frage_block" id="frage_block" value="auswahl">
+                <h4>What do you usually do on weekends?</h4>
+                <label>
+                    <input type="radio" name="question1" value="1" required> I go to the cinema.
+                </label><br>
+                <label>
+                    <input type="radio" name="question1" value="2" required> I went to the park.
+                </label><br>
+                <label>
+                    <input type="radio" name="question1" value="3" required> I will go to the beach.
+                </label><br>
+
+                <h4>Where are your keys?</h4>
+                <label>
+                    <input type="radio" name="question2" value="1" required> I am putting them in my bag.
+                </label><br>
+                <label>
+                    <input type="radio" name="question2" value="2" required> They was on the chair.
+                </label><br>
+                <label>
+                    <input type="radio" name="question2" value="3" required> They are on the table.
+                </label><br>
+
+                <h4>What are you doing right now?</h4>
+                <label>
+                    <input type="radio" name="question3" value="1" required> I am watching TV.
+                </label><br>
+                <label>
+                    <input type="radio" name="question3" value="2" required> I watch TV.
+                </label><br>
+                <label>
+                    <input type="radio" name="question3" value="3" required> I watched TV.
+                </label><br>
+
+                <h4>Where did you go for your last holiday?</h4>
+                <label>
+                    <input type="radio" name="question4" value="1" required> I am going to Spain.
+                </label><br>
+                <label>
+                    <input type="radio" name="question4" value="2" required> I went to Spain.
+                </label><br>
+                <label>
+                    <input type="radio" name="question4" value="3" required>  I go to Spain.
+                </label><br>
+
+                <h4>What is your favourite food?</h4>
+                <label>
+                    <input type="radio" name="question5" value="1" required> I liked pizza.
+                </label><br>
+                <label>
+                    <input type="radio" name="question5" value="2" required> I am liking pizza.
+                </label><br>
+                <label>
+                    <input type="radio" name="question5" value="3" required> My favourite food is pizza.
+                </label><br>
+
+                <h4>What time do you go to bed?</h4>
+                <label>
+                    <input type="radio" name="question6" value="1" required> I went to bed at 10 o’clock.
+                </label><br>
+                 <label>
+                    <input type="radio" name="question6" value="2" required> I go to bed at 10 o’clock.
+                </label><br>
+                <label>
+                    <input type="radio" name="question6" value="3" required> I am going to bed at 10 o’clock.
+                </label><br>
+            {% endif %}
+
+            {% if sprachlevel == 'A2' %}
+                <div class="intro orange">
+                    <h4>
+                        Mit diesem Test hast Du die Chance den nächsten Schritt ins Level B1 zu machen.
+                        Beantworte jede Frage so ausführlich wie möglich. Achte dabei auf Grammatik, Wortwahl und Satzbau.
+                        <p>Viel Erfolg und auf zu B1!</p>
+                    </h4>
+                </div>
+                <input type="hidden" name="frage_block" id="frage_block" value="freitextantworten">
+
+                <h4>1: Can you tell me about a recent trip or holiday you took? Where did you go, and what did you do there?</h4>
+                <label>
+                    <textarea name="block2_question1" rows="4" cols="50" placeholder="Gib hier deine Antwort ein" required></textarea>
+                </label><br>
+
+                <h4>2: What do you usually do on weekends? Do you have any hobbies or activities you enjoy?</h4>
+                <label>
+                    <textarea name="block2_question2" rows="4" cols="50" placeholder="Gib hier deine Antwort ein" required></textarea>
+                </label><br>
+
+                <h4>3: Can you explain how to cook your favorite dish or how to make a simple recipe?</h4>
+                <label>
+                    <textarea name="block2_question3" rows="4" cols="50" placeholder="Gib hier deine Antwort ein" required></textarea>
+                </label><br>
+
+                <h4>4: Have you ever been to an English-speaking country? What was your experience like?</h4>
+                <label>
+                    <textarea name="block2_question4" rows="4" cols="50" placeholder="Gib hier deine Antwort ein" required></textarea>
+                </label><br>
+
+                <h4>5: If you could choose, would you prefer to live in the city or the countryside? Why?</h4>
+                <label>
+                    <textarea name="block2_question5" rows="4" cols="50" placeholder="Gib hier deine Antwort ein" required></textarea>
+                </label><br>
+            {% endif %}
+
+            {% if sprachlevel == 'B1' %}
+                <div class="intro gruen">
+                    <h4>
+                        Dieser Test bringt Dich Deinem Ziel, das Sprachlevel B2 zu erreichen, ein Stück näher.
+                        Du füllst Lücken in einem Text, indem Du die passenden Wörter auswählst oder einfügst.
+                        Achte dabei auf Grammatik, Wortwahl und Satzbau.
+                        </p>
+                        <p>Viel Erfolg und auf zu B2!</p>
+                    </h4>
+                </div>
+                <input type="hidden" name="frage_block" id="frage_block" value="lueckentext">
+                <p>
+                    Hello! My name is Clara, and I live in Vancouver, Canada. I really enjoy <textarea name="luecke1" rows="1" cols="20" placeholder="Gib hier deine Antwort ein" required></textarea> in Stanley Park,
+                    where I often take my camera to
+                    <select name="luecke2" required>
+                        <option value="a">catch</option>
+                        <option value="b">take</option>
+                        <option value="c">grab</option>
+                    </select>
+                    pictures of the beautiful trees and wildlife. When I’m not
+                    outdoors, I like to read fantasy books or
+                    <select name="luecke3" required>
+                        <option value="a">play</option>
+                        <option value="b">talk</option>
+                        <option value="c">chat</option>
+                    </select>
+                    with my friends online.
+                </p>
+                <p>
+                    If you want to chat with me, you can
+                    <textarea name="luecke4" rows="1" cols="20" placeholder="Gib hier deine Antwort ein" required></textarea>
+                    me about your hobbies or what you like to do in your free time. I always enjoy
+                    <textarea name="luecke5" rows="1" cols="20" placeholder="Gib hier deine Antwort ein" required></textarea>
+                    about new activities and interesting places! Have you ever
+                    <select name="luecke6" required>
+                        <option value="a">gone</option>
+                        <option value="b">traveled</option>
+                        <option value="c">visited</option>
+                    </select>
+                    to Canada? I’d love to
+                    <select name="luecke7" required>
+                        <option value="a">hear</option>
+                        <option value="b">listen</option>
+                        <option value="c">speak</option>
+                    </select>
+                    about your experiences. I also try to
+                    <textarea name="luecke10" rows="1" cols="20" placeholder="Gib hier deine Antwort ein" required></textarea>
+                    English every day, so feel free to correct my mistakes!
+                </p>
+                <p>
+                    Sometimes, I feel a bit
+                    <select name="luecke9" required>
+                        <option value="a">excited</option>
+                        <option value="b">joyful</option>
+                        <option value="c">overwhelmed</option>
+                    </select>
+                    balancing school, hobbies, and future plans. But chatting with others really helps me
+                    <textarea name="luecke10" rows="1" cols="20" placeholder="Gib hier deine Antwort ein" required></textarea>
+                    more relaxed. I hope we can have a fun conversation together!
+                </p>
+            {% endif %}
+
+            <input type="submit" class="button gruen" value="Absenden">
+        </form>
+    </div>
+
+
+
+
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,179 @@
+{% extends "vorlagen/main.html" %}
+{% block content %}
+
+<header class="header">
+    <div class="header-content">
+        <h4>
+            Auf dieser Seite findest du digitale Brieffreunde, die perfekt zu deinem Englisch-Sprachniveau passen.
+            Jeder von ihnen bringt besondere Eigenschaften mit, um dir beim Lernen zu helfen.
+            Durch einen Klick auf das jeweilige Profilbild gelangst du direkt in den Chat und kannst sofort loslegen!
+        </h4>
+    </div>
+    <img src="../static/pictures/Hand%20holding%20smartphone.jpg" alt="Chat" height="250px" width="300px" class="header_image">
+</header>
+
+
+<div class="body-content">
+
+    <!--Gemeinsamer Name: tabs; somit nur ein Radiobutton auswählbar -->
+    <input type="radio" id="tab1" name="tabs" class="level-radio" checked>
+    <label for="tab1" class="orange button">Sprachlevel A</label>
+
+    <input type="radio" id="tab2" name="tabs" class="level-radio">
+    <label for="tab2" class="gruen button">Sprachlevel B</label>
+
+    <input type="radio" id="tab3" name="tabs" class="level-radio">
+    <label for="tab3"  class="blau button">Sprachlevel C</label>
+
+    <!-- Sprachlevel A: Amy und Bobby -->
+    <div class="chatbot" id="levelA">
+        <div class="boxen-system">
+            <div class="box orange">
+                    <a href="/bot">
+                        <img src="../static/pictures/chatbots/Amy.png" alt="Amy" class="profilbild">
+                    </a>
+                    <p></p>
+                    <div class=" box-content headline">
+                        <h2> Amy Johnson – 14 Jahre</h2>
+                        <h3> aus New York, USA</h3>
+                    </div>
+                    <div class="box-content">
+                        <h4>
+                                Amy lebt mit ihren Eltern und ihrem jüngeren Bruder in New York.
+                                Ihr größter Traum ist es, eine bekannte Künstlerin zu werden.
+                                Gemeinsam könnt ihr einfache Begrüßungen üben, den Alltag auf Englisch beschreiben
+                                und über eure Hobbies sprechen. Stärke dein Selbstvertrauen und erfahre mehr
+                                über amerikanische Kultur.
+                            <h3>Werde ihr Digitaler Brieffreund und habt Spaß beim gemeinsamen Lernen!</h3>
+                        </h4>
+                    </div>
+                </div>
+
+                <div class="box orange">
+                    <a href="https://chatgpt.com/g/g-Vr4QUJszI-a2-english-bobby-from-london-england">
+                        <img src="../static/pictures/chatbots/Bobby.png" alt="Bobby" class="profilbild">
+                    </a>
+                    <p></p>
+                    <div class=" box-content headline">
+                        <h2> Bobby Smith – 16 Jahre</h2>
+                        <h3> aus London, England</h3>
+                    </div>
+                    <div class="box-content">
+                        <h4>
+                                Bobby ist dein perfekter digitaler Brieffreund!
+                                Er liebt es, über Fußball, Videospiele und das Leben in London zu sprechen.
+                                Nutze die Gelegenheit, um deinen Wortschatz rund um Freizeitaktivitäten zu
+                                erweitern und einfache Gespräche über alltägliche Themen zu führen. Tauche in
+                                Bobbys Welt ein und verbessere spielerisch dein Englisch – er freut sich auf
+                                den Austausch mit dir!
+                        </h4>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+
+    <!-- Sprachlevel B: Clara und Santiago -->
+    <div class="chatbot" id="levelB">
+        <div class="boxen-system">
+            <div class="box gruen">
+                <a href="https://chatgpt.com/g/g-hZPCjDyLu-b1-english-clara-from-vancouver-canada">
+                    <img src="../static/pictures/chatbots/Clara.png" alt="Clara" class="profilbild">
+                </a>
+                <p></p>
+                <div class=" box-content headline">
+                    <h2> Clara Bennett– 18 Jahre</h2>
+                    <h3> aus Vancouver, Kanada</h3>
+                </div>
+                <div class=" box-content">
+                    <h4>
+                        Sie liebt Fotografie, Jogging im Stanley Park und Fantasy-Romane.
+                        Nutze die Chance, dein Englisch zu verbessern und dabei spannende Gespräche zu führen:
+                        Diskutiere Buchauszüge und tausche dich im Chat aus.  Lerne mehr über Natur, Fotografie und kanadische Kultur.
+                        Clara teilt ihre Leidenschaft für Reisen und Kultur, während du deine sprachlichen Fähigkeiten ausbaust.
+                    </h4>
+                    <h3>Starte den Austausch und gewinne wertvolle Einblicke!</h3>
+                </div>
+            </div>
+            <div class="box gruen">
+                <a href="https://chatgpt.com/g/g-C0Qw4RO4d-b2-english-santiago-from-dallas-texas">
+                    <img src="../static/pictures/chatbots/Santiago.png" alt="Santiago" class="profilbild">
+                </a>
+                <p></p>
+                <div class="box-content headline">
+                    <h2> Santiago Martinez – 20 Jahre</h2>
+                    <h3> aus Dallas, USA</h3>
+                </div>
+                <div class=" box-content">
+                    <h4>
+                        Santiago ist der perfekte Brieffreund für spannende Englischgespräche. Er interessiert sich
+                        für Bullenreiten, Technik und amerikanische Geschichte – und freut sich auf den Austausch mit dir:
+                    </h4>
+                    <h4>
+                        Nutze die Gelegenheit, deinen mündlichen Ausdruck und dein Hörverständnis zu verbessern.
+                        Santiago bietet dir realistische Gesprächssituationen, die deinen Wortschatz erweitern und
+                        deine Englischkenntnisse auf das nächste Level bringen. Lerne neue Begriffe aus den Bereichen Geschichte,
+                        Sport und IT.
+                    </h4>
+                    <h3>Starte den Austausch und tauche ein in spannende Themen!</h3>
+                </div>
+             </div>
+        </div>
+    </div>
+
+    <!-- Sprachlevel B: Amelia und Ram -->
+    <div class="chatbot" id="levelC">
+        <div class="boxen-system">
+            <div class="box blau">
+                <a href="https://chatgpt.com/g/g-1DnXXjnvD-c1-english-amelia-from-melbourne-australia">
+                    <img src="../static/pictures/chatbots/Amelia.png" alt="Amelia" class="profilbild">
+                </a>
+                <p></p>
+                <div class="box-content headline">
+                    <h2> Amelia Thompson – 24 Jahre</h2>
+                    <h3> aus Melbourne, Australien</h3>
+                </div>
+                <div class="box-content">
+                    <h4>
+                        Amelia ist Lehrerin mit einer Leidenschaft für Surfen, Yoga und Backen.
+                        Wenn du dein Englisch beruflich verbessern möchtest, bietet Amelia dir die perfekte Gelegenheit.
+                    </h4>
+                    <h4>
+                        Mit Amelia kannst du deine Fähigkeiten in der englischen Sprache gezielt erweitern, sei es
+                        durch die Vorbereitung auf berufliche Präsentationen oder durch das Verbessern deines
+                        Hörverständnisses in Gesprächen über aktuelle Ereignisse oder Kultur. Übe, deine Ansichten
+                        in komplexen Diskussionen klar darzulegen.
+                    </h4>
+                    <h3>Chatte mit Amelia und entwickle deine Fähigkeiten weiter – praxisnah und spannend!</h3>
+                </div>
+            </div>
+            <div class="box blau">
+                <a href="https://chatgpt.com/g/g-gmYd6C0Ko-c2-english-ram-from-bangalore-india">
+                    <img src="../static/pictures/chatbots/Ram.png" alt="Ram" class="profilbild">
+                </a>
+                <p></p>
+                <div class="box-content headline">
+                    <h2> Ram Kumar– 26 Jahre</h2>
+                    <h3> aus Bangalore, Indien</h3>
+                </div>
+                <div class="box-content">
+                    <h4>
+                        Ram ist Softwareentwickler und interessiert sich nicht nur für das Programmieren sondern auch
+                        für Science-Fiction und Trekking.
+                    </h4>
+                    <h4>
+                        Mit Ram kannst du deine Ausdrucksfähigkeit zu komplexen Themen verbessern und über
+                        Technologie, Nachhaltigkeit und kulturelle Unterschiede diskutieren. Außerdem gewinnst du
+                        Einblicke in die indische Kultur.
+                    </h4>
+                    <h3>Starte den Austausch und entwickle dein Englisch praxisnah weiter!</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

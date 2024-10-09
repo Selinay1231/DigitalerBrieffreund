@@ -1,0 +1,71 @@
+{% extends "vorlagen/main.html" %}
+{% block content %}
+
+<head>
+    <title>Dein digitaler Brieffreund Amy</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+<main class="body-content">
+    <img class="chatbild" src="../static/pictures/chatbots/Amy.png" alt="Amy">
+    <h1>Dein Brieffreund Amy zum Sprachenlernen</h1>
+    <div class="formular" id="chatbox">
+        <!-- Begrüßungsnachricht von Amy -->
+        <div class="message bot">Hey! I am Amy, how are you today?</div>
+    </div>
+    <span class="loader" id="loader"><i class="fas fa-spinner fa-spin"></i></span>
+    <div class="inputbox" id="inputBox">
+        <input class="userinput" id="userInput" type="text" placeholder="Schreib eine Nachricht..." />
+        <button id="sendButton" class="button gruen" onclick="sendMessage()">Senden</button>
+    </div>
+    <div class="error" id="errorBox"></div>
+
+    <script>
+        async function sendMessage() {
+            // Fehleranzeige zurücksetzen
+            document.getElementById('errorBox').innerText = '';
+
+            const userInput = document.getElementById('userInput');
+            const message = userInput.value;
+
+            if (message.trim() === '') {
+                document.getElementById('errorBox').innerText = 'Bitte geben Sie eine Nachricht ein.';
+                return;
+            }
+
+            userInput.value = '';
+            const chatbox = document.getElementById('chatbox');
+            chatbox.innerHTML += `<div class="message user">` + message + `</div>`;
+            chatbox.scrollTop = chatbox.scrollHeight;
+
+            document.getElementById('loader').style.display = "block";
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ 'message': message, 'pm': '' })
+                });
+
+                const responseData = await response.json();
+                chatbox.innerHTML += `<div class="message bot">` + responseData.message + `</div>`;
+            } catch (error) {
+                document.getElementById('errorBox').innerText = 'Es gab einen Fehler bei der Verarbeitung Ihrer Nachricht.';
+            } finally {
+                document.getElementById('loader').style.display = "none";
+                chatbox.scrollTop = chatbox.scrollHeight;
+            }
+        }
+
+        document.getElementById('userInput').addEventListener('keyup', function (event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</main>
+
+
+{% endblock %}

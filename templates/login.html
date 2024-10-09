@@ -1,0 +1,23 @@
+{% extends "vorlagen/main.html" %}
+{%  block content %}
+
+<div class="formular log">
+    <h1> Login </h1>
+    <p>Melde Dich an</p>
+    <!-- Login-Formular, um den Benutzer auf sein Profil weiterzuleiten -->
+    <form action="/login" method="POST">
+        <div class="form-content">
+            <label for="email">E-Mail</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="@uni-hildesheim.de" required>
+        </div>
+        <div class="form-content">
+                <label for="passwort">Passwort</label>
+            <input type="password" class="form-control" id="password"  name="passwort" placeholder="******" required>
+        </div>
+        <p><button type="submit" class="button gruen">anmelden</button></p>
+        <p class="option"><a href="#">Passwort vergessen?</a></p>
+        <p class="option"><a href="/regist">Noch nicht registriert?</a></p>
+    </form>
+</div>
+
+{% endblock %}

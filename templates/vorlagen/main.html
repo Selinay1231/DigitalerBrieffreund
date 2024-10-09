@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../static/style.css">
+    <title>Digitaler Brieffreund</title>
+</head>
+<body>
+
+<nav class="naviband blau3">
+    <img src="../static/pictures/Digitaler Brieffreund.png" alt="Logo" class="navi-logo">
+    <ul class="navi-menu">
+        {% for item in navi %}
+            {% if item == "Startseite" %}
+                <li><a href="/" class="navi-item">{{ item }} </a></li>
+
+            <div class="vertical-line"></div>
+            {% elif item == "Einloggen" %}
+                <li><a href="/login" class="navi-item">{{ item }}</a></li>
+
+            <div class="vertical-line"></div>
+            {% elif item == "Neu anmelden" %}
+                <li><a href="/regist" class="navi-item">{{ item }}</a></li>
+
+            <div class="vertical-line"></div>
+            {% elif item == "FAQ" %}
+                <li><a href="/fragen" class="navi-item">{{ item }}</a></li>
+
+            <div class="vertical-line"></div>
+            {% elif item == "Über Uns" %}
+                <li><a href="/ueber_uns" class="navi-item">{{ item }}</a></li>
+
+            {% elif item == "Mein Profil" %}
+                <li><a href="/profil" class="navi-item">{{ item }}</a></li>
+
+            <div class="vertical-line"></div>
+            {% elif item == "Sprachniveau" %}
+                <li class="dropdown">
+                    <a href="#" class="navi-item">Sprachniveau</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/sprachniveau" class="drop-item">Digitale Brieffreunde</a></li>
+                        <li><a href="/leveltest" class="drop-item">Teste Dein Sprachlevel</a></li>
+                    </ul>
+                </li>
+
+            <div class="vertical-line" ></div>
+            {% elif item == "Chat" %}
+                <li><a href="/bot" class="navi-item">{{ item }}</a></li>
+
+            <div class="vertical-line" ></div>
+            {% elif item == "Fortschritt" %}
+                <li><a href="/fortschritt" class="navi-item">{{ item }}</a></li>
+
+            <div class="vertical-line" ></div>
+            {% elif item == "Ausloggen" %}
+                <li><a href="/logout" class="navi-item">{{ item }}</a></li>
+
+            {% endif %}
+        {% endfor %}
+     </ul>
+</nav>
+<hr>
+
+</body>
+
+
+{%  block content %}
+{%  endblock %}
+<p></p>
+
+{% if session['login_status'] == 0 %}
+    <footer class="footer blau3">
+        <div class="footer-header blau3">
+            <h3 class="footer-item">Impressum</h3>
+        </div>
+        <hr class="horizontal-line">
+        <div class="boxen-system">
+            <section class="footer-content">
+                <h4 class="footer-item">Geschäftsführer: Max Mustermann</h4>
+                <p class="footer-item">Max Mustermann</p>
+                <p class="footer-item">Musterfirma GmbH</p>
+                <p class="footer-item">Musterstraße 1</p>
+                <p class="footer-item">12345 Musterstadt</p>
+            </section>
+            <section class="footer-content">
+                <h4 class="footer-item">Kontakt:</h4>
+                <p class="footer-item">Telefon: +49 (0) 123 456789</p>
+                <p class="footer-item">Telefax: +49 (0) 123 456789</p>
+                <p class="footer-item">E-Mail: info@musterfirma.de</p>
+            </section>
+            <section class="footer-content">
+                <h4 class="footer-item">Registereintrag:</h4>
+                <p class="footer-item">Eintragung im Handelsregister</p>
+                <p class="footer-item">Registergericht: Amtsgericht Musterstadt</p>
+                <p class="footer-item">Registernummer: 12345</p>
+            </section>
+        </div>
+    </footer>
+{% endif %}
+
+
+</html>

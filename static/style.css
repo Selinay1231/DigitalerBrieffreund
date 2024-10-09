@@ -1,0 +1,493 @@
+/* Allgemeine Stile für den Body */
+
+body {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-weight: 500;
+    margin: 0 0 15px;
+    line-height: 1.4;
+    font-size: 40px;
+}
+h2 {
+    font-weight: 400;
+    margin: 0 0 15px;
+    line-height: 1.4;
+    font-size: 35px;
+}
+h3 {
+    font-weight: 400;
+    margin: 0 0 15px;
+    line-height: 1.4;
+    font-size: 30px;
+
+}
+h4 {
+    font-weight: 300;
+    margin: 0 0 15px;
+    line-height: 1.4;
+    font-size: 24px;
+}
+h5 {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+/*Farbpalette*/
+.blau {
+    background-color: #95b4e0;
+}
+.orange {
+    background-color: #e48569;
+}
+.gruen {
+    background-color: #cfd2a5;
+}
+.lila {
+    background-color: #764678;
+}
+.hellblau {
+    background-color: #dfebe9;
+}
+.blau2{
+    background-color: #b3c9c6;
+}
+.blau3{
+    background-color: #9cbcb7;
+}
+.blau4{
+    background-color: #bed5db;
+}
+
+.akzentblau {
+    background-color: #78a0a9;
+}
+
+.akzentgruen {
+    background-color: #c5c997;
+}
+
+/*Navigationsband*/
+
+.naviband {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    position: relative;
+}
+
+.navi-logo {
+    padding: 10px;
+    height: 125px;
+    width: 400px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navi-menu {
+    display: flex;
+    list-style-type: none; /* damit der Listenpunkt verschwindet */
+    margin: 0;
+    margin-left: auto;
+    padding: 0;
+}
+
+.navi-menu li {
+    position: relative;
+    margin-right: 20px;
+}
+
+.navi-item {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    display: block;
+}
+
+.navi-item:hover {
+    background-color: #78a0a9;
+}
+
+.vertical-line {
+    height: 45px;
+    border-left-width: 5px ;
+    margin: 0 30px;
+    border-left: solid #78a0a9;
+}
+/*Drop-Down Menü*/
+.dropdown-content {
+    display: none;
+    position: absolute;
+    list-style-type: none;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content li {
+    margin:0;
+}
+.drop-item {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.drop-item:hover {
+    background-color: darkseagreen ;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.faq {
+    border:0;
+}
+.faqinnen {
+    padding: 20px;
+}
+
+.item {
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    color: black;
+}
+.item:hover {
+    color: white;
+}
+
+/* Header-Bereich */
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.header-content {
+    max-width: 50%;
+}
+.header-img {
+    max-width: 40%;
+}
+
+/* Footer-Bereich */
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 3px;
+    background-color: #78a0a9;
+    border: none; /
+}
+
+.footer-content {
+    max-width: 50%;
+}
+.footer-item {
+    text-decoration: none;
+    color: white;
+}
+
+/* Inhalt-Bereich */
+.body-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Verschiedene Layout-Optionen */
+.intro {
+    align-items: flex-start;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.boxen-system {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 20px;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.box-system {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 20px;
+    margin: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    position: relative;
+    width: 90%;
+}
+
+.box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 15px;
+    border: 3px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    position: relative;
+    padding-bottom: 50px;
+    padding-top: 20px;
+}
+.box-headline{
+    position: absolute;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    top: -15px;
+    border: 0;
+    border-radius: 16px;
+    text-align: center;
+    z-index:2; /* Die Headline soll vor der Content-Box liegen */
+}
+.box-content{
+    position: relative;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    top: 20px;
+    padding:20px;
+    border: 0;
+    z-index:1;
+}
+
+.profilbild {
+    position: absolute;
+    top: -80px; /* Positioniert das Bild über dem Rechteck */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden; /* Schneidet den Teil des Bildes ab, der außerhalb des Containers liegt */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.profil-box {
+    display: flex;
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    gap: 10px; /* Abstand zwischen den Bildern */
+}
+
+.profil {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover; /* Zuschneiden des Bildes */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+/*Formular*/
+.formular {
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 80%;
+    width: 100%;
+    z-index: 2;
+}
+/* Registrierung, Login, Logout kleineres Formular*/
+.log {
+    max-width: 400px;
+}
+.form-content {
+    margin-bottom: 20px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.form-content input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.background_image{
+    position:relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.option a{
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    color: grey;
+}
+
+.profile-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    text-align: center;
+    padding: 30px;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+}
+
+.bot  {
+    top: 300px;
+    width: 300px;
+    height: 180px;
+}
+
+.button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chatbot {
+    display: none; /*Der Inhalt der Brieffreundbox muss ausgeblendet werden, bis der content mit checked verwendet wird.*/
+}
+
+.level-radio {
+    display: none; /*Versteckt die Zeichen für Radio*/
+}
+
+input[type="radio"]:checked + label {
+    color: white; /*Ausgewählter Tab erhält anderes Design*/
+}
+
+#tab1:checked ~ .chatbot#levelA,
+#tab2:checked ~ .chatbot#levelB,
+#tab3:checked ~ .chatbot#levelC{
+    display: block;
+}
+
+/*Chat*/
+
+.message {
+    margin: 10px 0;
+}
+
+.message.user {
+    text-align: right;
+}
+
+.message.bot {
+    text-align: left;
+    color: #78a0a9;
+}
+
+#loader {
+    display: none;
+    text-align: center;
+}
+
+.userinput{
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.inputbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    max-width: 800px;
+}
+
+#userInput {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+.error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.chatbild{
+    width: 250px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.eva-radio {
+    display: inline-block;
+}
+
+
+
+
+
+
+
+

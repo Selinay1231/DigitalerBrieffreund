@@ -1,0 +1,31 @@
+{% extends "vorlagen/main.html" %}
+{% block content %}
+
+<div class="background_image">
+    <div class="formular log">
+        <h1>Registrierung</h1>
+        <p>Bitte registrieren Sie sich, indem Sie Ihre Angaben tätigen!</p>
+
+        <!-- Registrierungs-Formular für einen neuen Benutzer -->
+        <form action="/regist" method="POST">
+            <div class="form-content">
+                <!-- verschiedene Eingabefelder für die Daten des Benutzers -->
+                <label for="vname">Vorname: </label>
+                <input type="text" name="vorname" id="vname" required>
+            </div>
+            <div class="form-content">
+                <label for="email">E-Mail:</label>
+                <input type="email"  name="email" id="email" required><br>
+            </div>
+            <div class="form-content">
+                <label for="passwort">Passwort:</label>
+                <input type="password"  name="passwort" id="passwort" required><br>
+            </div>
+
+            <input type="hidden" name="level" value="A1">
+            <button type="submit" class="button gruen">Registrieren</button>
+        </form>
+
+    </div>
+</div>
+{%  endblock %}

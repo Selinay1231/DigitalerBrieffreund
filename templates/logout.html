@@ -1,0 +1,14 @@
+{% extends "vorlagen/main.html" %}
+{% block content %}
+    <div class="formular log">
+            <h3>Bist du sicher, dass du dich abmelden möchtest?</h3>
+            <h4>
+                <p>Falls du später zurückkehren möchtest, kannst du dich jederzeit wieder einloggen.</p>
+                <p>Möchtest du fortfahren?</p>
+            </h4>
+            <form action="/logout" method="POST">
+                <button type="submit" class="button gruen">Ausloggen</button>
+            </form>
+            <p class="option"><a href="/profil">Abbrechen</a></p>
+    </div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "vorlagen/main.html" %}
+{% block content %}
+
+<header class="header">
+    <div class="header-content">
+       <h2>Mein Profil</h2>
+    </div>
+</header>
+<body class="body-content">
+
+    <div class="box-system">
+        <div class="box-headline hellblau">
+            <h3>Personenbezogene Daten</h3>
+        </div>
+        <div class="box-content">
+        <form action="/profil" method="POST">
+            {% for nutzer in nutzer_daten %}
+                <p>
+                    <label for="vorname">Vorname:</label>
+                    <input type="text" name="vorname" id="vorname" value="{{ nutzer[0] }}" required>
+                </p>
+                <p>
+                    <label for="email">E-Mail:</label>
+                    <input type="text" name="email" id="email" value="{{ nutzer [1] }}" required><br>
+                </p>
+                <p>
+                    <label for="passwort">Passwort:</label>
+                    <input type="password" name="passwort" id="passwort" value="{{ nutzer [2] }}" required><br>
+
+                </p>
+                <p>
+                    <label for="passwort_bestaetigung">Passwort zur Bestätigung:</label>
+                    <input type="password" name="passwort_bestaetigung" id="passwort_bestaetigung" required><br>
+                </p>
+            {% endfor %}
+            <button type="submit" class="akzentgruen" value="Daten aktualisieren">Daten aktualisieren</button>
+        </form>
+        </div>
+    </div>
+
+    <div class="box-system">
+        <div class="box-headline hellblau">
+            <h4>Sprachliches</h4>
+        </div>
+        <div class="box-content">
+            {% for nutzer in nutzer_daten %}
+                <p><label>Sprachlevel: {{ nutzer[3] }}</label></p>
+            {% endfor %}
+            <button onclick="window.location.href = '/leveltest';" class="button akzentgruen">Aktualisiere dein Sprachlevel</button>
+        </div>
+
+    </div>
+    <div class="box-system">
+        <div class="box-headline hellblau">
+            <h4>Einstellungen</h4>
+        </div>
+        <div class="box-content">
+            <div class="headline">Benachrichtigungen</div>
+            <div class="dropdown-content">
+                <div class="box-content hellblau"> </div>
+            </div>
+
+            <div class="headline">Sicherheit</div>
+            <div class="dropdown-content">
+                <div class="box-content hellblau"> </div>
+            </div>
+
+            <div class="headline">Spracheinstellungen</div>
+            <div class="dropdown-content">
+                <div class="box-content hellblau"> </div>
+            </div>
+
+            <div class="headline">Zusätzliche Optionen</div>
+            <div class="dropdown-content">
+                <div class="box-content hellblau"> </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+{% endblock %}
