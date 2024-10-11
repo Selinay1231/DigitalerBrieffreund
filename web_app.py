@@ -10,9 +10,7 @@ from langchain.docstore.document import Document
 import openai
 
 # OpenAI API-Key setzen
-os.environ["OPENAI_API_KEY"] = 'sk-proj-2MZdG3l5XKAdBm4jp5DuT3BlbkFJNOV9DlUA4fXw4SW2qT5a'
-openai.api_key = 'sk-proj-2MZdG3l5XKAdBm4jp5DuT3BlbkFJNOV9DlUA4fXw4SW2qT5a'
-
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
 
