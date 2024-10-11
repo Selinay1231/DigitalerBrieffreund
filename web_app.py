@@ -10,9 +10,10 @@ from langchain.docstore.document import Document
 import openai
 
 # OpenAI API-Key setzen
+os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
-llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
+llm = ChatOpenAI(temperature=0, model_name="gpt-4o-mini")
 
 def calculate_similarity_with_embeddings(user_message, embedding_df, embed):
     try:
@@ -67,17 +68,30 @@ def logic(question):
         print("Ähnlichkeiten berechnet")
 
         most_similar_index = np.argmax(similarities)
-        print(f"Index des ähnlichsten Dokuments: {most_similar_index}")
-        most_similar_document = valid_embedding_df.iloc[most_similar_index]['content']
-        print(f"Inhalt des ähnlichsten Dokuments: {most_similar_document}")
+        max_similarity = similarities[0][most_similar_index]
+        print(f"Maximale Ähnlichkeit: {max_similarity}")
 
-        docs = [Document(page_content=most_similar_document)]
+        threshold = 0.7
 
-        prompt_template = "Beantworte die folgende Frage:\n\n{text}\n\n"
-        PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
-        chain = load_summarize_chain(llm, chain_type="stuff", prompt=PROMPT)
+        if max_similarity > threshold:
+            most_similar_document = valid_embedding_df.iloc[most_similar_index]['content']
+            print(f"Inhalt des ähnlichsten Dokuments: {most_similar_document}")
+
+            # Prompt erstellen, der den relevanten CSV-Inhalt enthält
+            prompt = f"Basierend auf folgendem Kontext, beantworte die Frage:\n\nKontext: {most_similar_document}\n\nFrage: {question}"
+        else:
+            # Falls keine relevante Übereinstimmung gefunden wird, frage direkt GPT
+            prompt = f"Beantworte die folgende Frage ohne zusätzlichen Kontext:\n\nFrage: {question}"
+
+        # PromptTemplate aktualisieren, um die Variable korrekt zu übergeben
+        prompt_template = PromptTemplate(template="{text}", input_variables=["text"])
+
+        # Summarize Chain laden
+        chain = load_summarize_chain(llm, chain_type="stuff", prompt=prompt_template)
         print("Summarize Chain geladen")
 
+        # Führe die Kette mit dem generierten Prompt aus
+        docs = [Document(page_content=prompt)]
         output = chain.run(docs)
         print(f"Ausgabe des Chains: {output}")
 
@@ -87,10 +101,10 @@ def logic(question):
         return "Es gab einen Fehler bei der Verarbeitung Ihrer Nachricht."
 
 
-df = pd.read_csv("embs0.csv")
-print(df.head())
-
-
+# Beispiel zum Testen des Chatbots
+question = "Was ist das beste Vorgehen zur Optimierung von Embeddings?"
+output = logic(question)
+print(output)
 
 
 
