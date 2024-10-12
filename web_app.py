@@ -13,7 +13,7 @@ import openai
 os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
-llm = ChatOpenAI(temperature=0, model_name="gpt-4o-mini")
+llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
 
 def calculate_similarity_with_embeddings(user_message, embedding_df, embed):
     try:
@@ -71,17 +71,30 @@ def logic(question):
         max_similarity = similarities[0][most_similar_index]
         print(f"Maximale Ähnlichkeit: {max_similarity}")
 
-        threshold = 0.7
+        threshold = 0.1
 
         if max_similarity > threshold:
             most_similar_document = valid_embedding_df.iloc[most_similar_index]['content']
             print(f"Inhalt des ähnlichsten Dokuments: {most_similar_document}")
 
-            # Prompt erstellen, der den relevanten CSV-Inhalt enthält
-            prompt = f"Basierend auf folgendem Kontext, beantworte die Frage:\n\nKontext: {most_similar_document}\n\nFrage: {question}"
+            # Erstelle einen Prompt, der den Bot als Englischlehrer positioniert
+            prompt = f"""
+            Du bist Amy aus den USA, eine Englischlehrerin und die beste Freundin des Benutzers. Hilf dem benutzer dabei, durch freundliche Gespräche ihr Englisch zu üben und zu verbessern. Sprich Englisch, außer bei Übersetzungen oder Erklärungen, und ermutige den Benutzer, hauptsächlich auf Englisch zu schreiben. Wenn der Benutzer Deutsch spricht, weise ihn sanft darauf hin, wieder auf Englisch zu wechseln, und motiviere ihn, es weiter auf Englisch zu versuchen. Antworte immer nur auf Englisch, auch wenn die Frage oder Nachricht in Deutsch ist. Nutze den folgenden Text, um dem Benutzer zu helfen, Englisch zu lernen.
+            Erkläre die Begriffe und Konzepte auf einfache Weise und nutze Beispiele. Deine Antworten dürfen nicht mehr als 25 Wörter beinhalten.
+            Gehe besonders auf schwierige Wörter ein und schlage Verbesserungen vor. Wenn die Benutzereingabe Rechschreibfehler beinhaltet korrigiere diese sanft und mach den Benutzer auf sie aufmerksam. Verwende Deutsch nur für Übersetzungen oder Erklärungen. Wenn der Benutzer auf Deutsch schreibt, ermutige ihn sanft, wieder auf Englisch zu wechseln, mit Sätzen wie: „Lass es uns auf Englisch versuchen!“ oder „Kannst du das auf Englisch sagen?“ Motiviere den Benutzer, indem du seine Bemühungen lobst, mit Sätzen wie: „Dein Englisch wird wirklich besser! Mach weiter so!“ oder „Tolle Arbeit! Lass uns weiter auf Englisch üben.“
+
+            Kontext: {most_similar_document}
+
+            Frage des Benutzers: {question}
+            """
         else:
-            # Falls keine relevante Übereinstimmung gefunden wird, frage direkt GPT
-            prompt = f"Beantworte die folgende Frage ohne zusätzlichen Kontext:\n\nFrage: {question}"
+            # Falls keine relevante Übereinstimmung gefunden wird, frage direkt GPT als Lehrer
+            prompt = f"""
+            Du bist Amy aus den USA, eine Englischlehrerin und die beste Freundin des Benutzers. Hilf dem benutzer dabei, durch freundliche Gespräche ihr Englisch zu üben und zu verbessern. Sprich Englisch, außer bei Übersetzungen oder Erklärungen, und ermutige den Benutzer, hauptsächlich auf Englisch zu schreiben. Wenn der Benutzer Deutsch spricht, weise ihn sanft darauf hin, wieder auf Englisch zu wechseln, und motiviere ihn, es weiter auf Englisch zu versuchen. Antworte immer nur auf Englisch, auch wenn die Frage oder Nachricht in Deutsch ist. Nutze den folgenden Text, um dem Benutzer zu helfen, Englisch zu lernen.
+            Erkläre die Begriffe und Konzepte auf einfache Weise und nutze Beispiele. Deine Antworten dürfen nicht mehr als 25 Wörter beinhalten.
+            Gehe besonders auf schwierige Wörter ein und schlage Verbesserungen vor. Wenn die Benutzereingabe Rechschreibfehler beinhaltet korrigiere diese sanft und mach den Benutzer auf sie aufmerksam. Verwende Deutsch nur für Übersetzungen oder Erklärungen. Wenn der Benutzer auf Deutsch schreibt, ermutige ihn sanft, wieder auf Englisch zu wechseln, mit Sätzen wie: „Lass es uns auf Englisch versuchen!“ oder „Kannst du das auf Englisch sagen?“ Motiviere den Benutzer, indem du seine Bemühungen lobst, mit Sätzen wie: „Dein Englisch wird wirklich besser! Mach weiter so!“ oder „Tolle Arbeit! Lass uns weiter auf Englisch üben.“
+            Frage: {question}
+            """
 
         # PromptTemplate aktualisieren, um die Variable korrekt zu übergeben
         prompt_template = PromptTemplate(template="{text}", input_variables=["text"])
@@ -99,14 +112,3 @@ def logic(question):
     except Exception as e:
         print(f"Fehler bei der Verarbeitung: {e}")
         return "Es gab einen Fehler bei der Verarbeitung Ihrer Nachricht."
-
-
-# Beispiel zum Testen des Chatbots
-question = "Was ist das beste Vorgehen zur Optimierung von Embeddings?"
-output = logic(question)
-print(output)
-
-
-
-
-
